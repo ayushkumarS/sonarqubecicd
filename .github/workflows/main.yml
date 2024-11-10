@@ -22,9 +22,12 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
+      - name: Generate Maven project
+        run: mvn archetype:generate -DgroupId=com.example -DartifactId=my-project -Dversion=1.0-SNAPSHOT -DinteractiveMode=false
+
       - name: Build with Maven
         run: mvn clean install --file pom.xml -Djacoco.skip=true -Dsurefire.useFile=false -DdisableXmlReport=true
-        
+
       - name: SonarQube Scan
         uses: kitabisa/sonarqube-action@v1.2.0
         with:
