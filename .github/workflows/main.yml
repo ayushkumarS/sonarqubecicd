@@ -23,7 +23,7 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install --file pom.xml -Djacoco.skip=true -Dsurefire.useFile=false -DdisableXmlReport=true
         
       - name: SonarQube Scan
         uses: kitabisa/sonarqube-action@v1.2.0
